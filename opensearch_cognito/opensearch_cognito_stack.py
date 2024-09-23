@@ -103,7 +103,7 @@ class OpensearchCognitoStack(Stack):
             enable_version_upgrade=True,
             removal_policy=RemovalPolicy.DESTROY,
             zone_awareness=_opensearch.ZoneAwarenessConfig(
-                  availability_zone_count=3
+                  availability_zone_count=1
             ),
             
             capacity=_opensearch.CapacityConfig(
