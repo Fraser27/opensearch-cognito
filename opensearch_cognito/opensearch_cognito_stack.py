@@ -105,13 +105,16 @@ class OpensearchCognitoStack(Stack):
             zone_awareness=_opensearch.ZoneAwarenessConfig(
                   availability_zone_count=3
             ),
+            
             capacity=_opensearch.CapacityConfig(
                 data_nodes=1,
-                data_node_instance_type='t3.small.search'
+                data_node_instance_type='t3.small.search',
+                multi_az_with_standby_enabled=False
             ),
             encryption_at_rest=_opensearch.EncryptionAtRestOptions(
                 enabled=True
             ),
+            
             node_to_node_encryption=True,
             enforce_https=True,
             ebs=_opensearch.EbsOptions(
