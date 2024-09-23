@@ -102,6 +102,9 @@ class OpensearchCognitoStack(Stack):
             domain_name=prefix,
             enable_version_upgrade=True,
             removal_policy=RemovalPolicy.DESTROY,
+            zone_awareness=_opensearch.ZoneAwarenessConfig(
+                  availability_zone_count=3
+            ),
             capacity=_opensearch.CapacityConfig(
                 data_nodes=1,
                 data_node_instance_type='t3.small.search'

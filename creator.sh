@@ -131,6 +131,9 @@ sudo npm install -g aws-cdk@2.91.0
 echo "--- Bootstrapping CDK on account in region $deployment_region ---"
 cdk bootstrap aws://$(aws sts get-caller-identity --query "Account" --output text)/$deployment_region
 
+printf "$Green Press Enter to proceed with deployment else ctrl+c to cancel $NC "
+read -p " "
+
 cd opensearch-cognito
 echo "--- pip install requirements ---"
 python3 -m pip install -r requirements.txt
@@ -139,6 +142,6 @@ echo "--- CDK synthesize ---"
 cdk synth -c environment_name=$infra_env -c application_prefix=$application_prefix -c suffix=$suffix
 
 echo "--- CDK deploy ---"
-cdk deploy -c environment_name=$infra_env -c application_prefix=$application_prefix -c suffix=$suffix oss-dev-OpensearchCognitoStack
+cdk deploy -c environment_name=$infra_env -c application_prefix=$application_prefix -c suffix=$suffix oss-dev-OpensearchCognitoStack --require-approval never
 
 echo "Deployment completed."
