@@ -33,10 +33,10 @@ get_input "Enter the application prefix " application_prefix
 get_input "Enter the suffix " suffix
 
 # Get master username
-get_input "Enter the master username for Opensearch " master_username
+# get_input "Enter the master username for Opensearch " master_username
 
 # Get master pwd
-get_input "Enter the master password for Opensearch " master_pwd
+# get_input "Enter the master password for Opensearch " master_pwd
 
 # Print the entered values for confirmation
 printf "$Green Opensearch Domain Name: \n"
